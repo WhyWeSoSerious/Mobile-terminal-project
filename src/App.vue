@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view></router-view>
+    <NavBottom v-if="isPersonal"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import NavBottom from "./components/navBottom/index"
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+   NavBottom
+  },
+  data() {
+    return {
+      isPersonal:true
+    }
+  },
+  mounted() {
+    if(this.$route.path.split('/')[1]==='personal'){
+      this.isPersonal = false;
+
+    }
+    if(this.$route.path==='responal'){
+      this.isPersonal = false
+    }
+    this.$bus.$on('isPersonal',(isPersonal)=>{
+      this.isPersonal = isPersonal
+    })
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  @import url('./assets/css/reset.css');
+  @import url('./assets/font/iconfont.css');
 </style>
