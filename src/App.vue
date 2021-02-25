@@ -6,35 +6,41 @@
 </template>
 
 <script>
-
+//引入底部导航
 import NavBottom from "./components/navBottom/index"
 export default {
   name: 'App',
-  components: {
-   NavBottom
-  },
   data() {
     return {
       isPersonal:true
     }
   },
-  mounted() {
+  mounted(){
     if(this.$route.path.split('/')[1]==='personal'){
-      this.isPersonal = false;
-
+      this.isPersonal = false
     }
     if(this.$route.path==='responal'){
-      this.isPersonal = false
+      this.isPersonal = false;
     }
     this.$bus.$on('isPersonal',(isPersonal)=>{
       this.isPersonal = isPersonal
+      console.log(isPersonal);
     })
   },
+  methods:{
+    
+  },
+  components: {
+    NavBottom,
+  }
 }
 </script>
 
 <style>
-
+/* *{
+  padding: 0;
+  margin: 0;
+} */
   @import url('./assets/css/reset.css');
   @import url('./assets/font/iconfont.css');
 </style>

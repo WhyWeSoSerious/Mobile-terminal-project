@@ -1,34 +1,33 @@
 <template>
   <div id="home">
-      <HomeHeader/>
+    <HomeHeader/>
     <HomeContent v-show="isShow" ></HomeContent>
     <cateGroys  v-show="!isShow"></cateGroys>
-
   </div>
 </template>
-
 <script>
 import HomeHeader from "../../components/HomeHeader"
 import HomeContent from "../../components/HomeContent"
 import cateGroys from "../../components/cateGroys"
 export default {
-  name: '',
   data() {
     return {
-      isShow:true //todo 标识
+      isShow:true,
     }
   },
   mounted() {
-    this.$bus.$son('isShow',(eva)=>{
-      this.isShow = eva
+    //绑定全局事件总线，接受消息，接到消息后跟新数据，此处用作判断显示那个组件
+    this.$bus.$on('isShow',(v)=>{
+      this.isShow = v
     })
   },
   components:{
-    HomeHeader,HomeContent,cateGroys
+    HomeHeader,
+    HomeContent,
+    cateGroys,
   }
 }
 </script>
-
-<style scoped>
+<style lang="less" scoped>
 
 </style>

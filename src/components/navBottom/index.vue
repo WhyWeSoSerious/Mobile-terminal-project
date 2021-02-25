@@ -1,54 +1,60 @@
 <template>
-  <div class=" navBottom">
+  <div class="navBottom" >
       <div @click="changeActive('home')" class="navItem">
-          <i :class="{active:activeFlag===home}"></i>
-      <span :class="{active:activeFlag===home}">首页</span>
-      <div @click="changeActive('home')" class="navItem">
-          <i :class="{active:activeFlag===home}"></i>
-      <span :class="{active:activeFlag===home}">分类</span>
-      <div @click="changeActive('home')" class="navItem">
-          <i :class="{active:activeFlag===home}"></i>
-      <span :class="{active:activeFlag===home}">值得买</span>
-      <div @click="changeActive('home')" class="navItem">
-          <i :class="{active:activeFlag===home}"></i>
-      <span :class="{active:activeFlag===home}">购物车</span>
-      <div @click="changeActive('home')" class="navItem">
-          <i :class="{active:activeFlag===home}"></i>
-      <span :class="{active:activeFlag===home}">个人中心</span>
+          <i :class="{active:activeFlag==='home'}"></i>
+          <span :class="{active:activeFlag==='home'}">首页</span>
       </div>
-
-  </div>
+      <div @click="changeActive('classify')" class="navItem">
+        <i :class="{active:activeFlag==='classify'}"></i>
+        <span :class="{active:activeFlag==='classify'}">分类</span>
+      </div>
+      <div @click="changeActive('DeserveBuy')" class="navItem">
+          <i :class="{active:activeFlag==='DeserveBuy'}"></i>
+          <span :class="{active:activeFlag==='DeserveBuy'}">值得买</span>
+      </div>
+      <div @click="changeActive('carShop')" class="navItem">
+          <i :class="{active:activeFlag==='carShop'}"></i>
+          <span :class="{active:activeFlag==='carShop'}">购物车</span>
+      </div>
+      <div @click="changeActive('responal')" class="navItem">
+          <i :class="{active:activeFlag==='responal'}"></i>
+          <span :class="{active:activeFlag==='responal'}">个人</span>
+      </div>
+    </div>
 </template>
-
 <script>
-import { mapState} from 'vuex'
+import {mapState} from "vuex"
 export default {
-  name: '',
   data() {
-      return {
-          activeFlag:'home'
-      }
+    return {
+      activeFlag:'home',//选中的标识
+    }
   },
   mounted() {
-      this.activeFlag = this.$route.path.split('/')[1]
+   
+    this.activeFlag = this.$route.path.split('/')[1];
   },
-  methods: {
-      changeActive(type){
-          this.activeFlag = type;
-          this.$router.push(`/${type}`);
-          if(type==='responal'){
-              let user = localStorage.getItem('user');
-              if(!user){
-                  this.$bus.$emit('isPersonal',false)
-              }else{
-                  this.$bus.$emit('isPersonal',true)
-              }
-          }
+  methods:{
+    changeActive(type){
+      this.activeFlag = type
+      //跳转到对应的界面
+      this.$router.push(`/${type}`)
+      if(type==='responal'){
+         //如果点击的是个人中心触发全局事件总线，
+        let user = localStorage.getItem('user')
+        if(!user){
+            this.$bus.$emit('isPersonal',false)
+        }
+      
       }
+      else{
+        this.$bus.$emit('isPersonal',true)
+      }
+    }
   },
   computed:{
     ...mapState({
-        data:state=>state.data
+      data:state=>state.data
     })
   }
 }
