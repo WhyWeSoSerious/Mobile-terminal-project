@@ -27,7 +27,7 @@ import {mapState} from "vuex"
 export default {
   data() {
     return {
-      activeFlag:'home',//选中的标识
+      activeFlag:'home',//todo 选中的标识
     }
   },
   mounted() {
@@ -37,10 +37,10 @@ export default {
   methods:{
     changeActive(type){
       this.activeFlag = type
-      //跳转到对应的界面
+      //?跳转到对应的界面
       this.$router.push(`/${type}`)
       if(type==='responal'){
-         //如果点击的是个人中心触发全局事件总线，
+      
         let user = localStorage.getItem('user')
         if(!user){
             this.$bus.$emit('isPersonal',false)

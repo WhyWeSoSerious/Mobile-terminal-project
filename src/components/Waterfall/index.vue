@@ -61,8 +61,8 @@ export default{
   data(){
     return{
         flag:true,
-        WaterNum:1,//触底瀑布的次数
-        WaterFish:[],//处理完成的数组，包含topics和look
+        WaterNum:1,//todo 触底瀑布的次数
+        WaterFish:[],//todo 处理完成的数组，包含topics和look
         data:[
           {
             img:

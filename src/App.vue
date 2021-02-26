@@ -6,7 +6,7 @@
 </template>
 
 <script>
-//引入底部导航
+//?引入底部导航
 import NavBottom from "./components/navBottom/index"
 export default {
   name: 'App',
@@ -41,6 +41,7 @@ export default {
   padding: 0;
   margin: 0;
 } */
+
   @import url('./assets/css/reset.css');
   @import url('./assets/font/iconfont.css');
 </style>

@@ -80,13 +80,10 @@
         <div class="line1" v-if="indexData.categoryHotSellModule">
           <div class="bigCom" v-for="(item, index) in indexData.categoryHotSellModule.categoryList.slice(0,2)" :key="index">
             <p>{{item.categoryName}}</p>
-            <!-- <img src="https://yanxuan-item.nosdn.127.net/644a27b8e168b8fe8e43ccaad934b24e.png?quality=75&type=webp&imageView&thumbnail=200x200" alt=""> -->
+            
             <img :src="item.picUrl">
           </div>
-          <!-- <div class="bigCom">
-            <p>热销榜</p>
-            <img src="https://yanxuan-item.nosdn.127.net/644a27b8e168b8fe8e43ccaad934b24e.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-          </div> -->
+       
         </div>
         <div class="line2" v-if="indexData.categoryHotSellModule">
           <div class="item" v-for="(item, index) in indexData.categoryHotSellModule.categoryList.slice(2)" :key="index">
@@ -182,14 +179,13 @@
 <script>
 import {mapState,mapActions} from "vuex"
 import Swiper from "../swiper"
-//引入底部导航
-// import NavBottom from "./components/navBottom/index"
+//?引入底部导航
+
 export default {
   data() {
     return {
-      time: 2 * 60 * 60 * 1000,//倒计时
-      // current:0,//轮播的下标
-      //swiper图片
+      time: 2 * 60 * 60 * 1000,//todo 倒计时
+     
       swiperImages:[
         'https://yanxuan.nosdn.127.net/e1d32c538a9fcf420411592746098ad2.jpg?type=webp&imageView&quality=75&thumbnail=750x0',
         'https://yanxuan.nosdn.127.net/e4b5ab7f6bb4b286b9fe18e42bb1f731.jpg?type=webp&imageView&quality=75&thumbnail=750x0',
@@ -200,19 +196,19 @@ export default {
     }
   },
   mounted() {
-    //获取首页信息
+    //?获取首页信息
     this.indexe()
   },
   methods: {
     ...mapActions({
       indexe:'indexe',
     }),
-    //轮播图发生变化的回调
+    //?轮播图发生变化的回调
     onChange(index) {
-      // console.log(index);
+      
       this.current = index;
     },
-    //点击指示器的回调
+    //?点击指示器的回调
     changeSwiperItem(index){
       this.$refs.vanSwiper.swipeTo(index);
     }
@@ -233,37 +229,7 @@ export default {
       margin-top: 148px;
       margin-bottom: 88px;
       background-color: #eee;
-      // .my-swipe {
-      //   .container{
-      //     width: 100%;
-      //     position: absolute;
-      //     left: 0;
-      //     bottom: 30px;
-      //     display: flex;
-      //     justify-content: center;
-      //   }
-      //   .custom-indicator {
-      //     font-size: 12px;
-      //     background-color: #fff;
-      //     width: 40px;
-      //     border-radius: 10px;
-      //     height: 4px;
-      //     margin-right: 8px;
-      //     opacity: .4;
-      //     &.active{
-      //       opacity: 1;
-      //     }
-      //   }
-      //   .van-swipe-item{
-      //     height:296px;
-      //     bottom: 40px;
-      //     img{
-      //     // width: 100%;
-      //     height: 370px;
-      //   }
-      //   }
-      // }
-      // 三个横向标题
+    
       .grow{
         display: flex;
         justify-content: space-around;

@@ -16,7 +16,7 @@ export default {
     }
   },
   mounted() {
-    //绑定全局事件总线，接受消息，接到消息后跟新数据，此处用作判断显示那个组件
+    //?绑定全局事件总线
     this.$bus.$on('isShow',(v)=>{
       this.isShow = v
     })

@@ -8,16 +8,14 @@ const originPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function (location, onComplete, onAbort) {
     
     if (onComplete || onAbort) {
-        //如果传递了回调函数,则让原来的push方法进行处理, 
-        //用call方法改变this的指向,让router可以调用原来的方法
-        //this就是路由器对象 $router
+        
         originPush.call(this, location, onComplete, onAbort);
     } else {
-        //如果第二次传递了相同的参数,那么会抛出失败的promise,所以要用catch处理错误
+        
         return originPush.call(this, location).catch(() => {
-            //这样后边的链式就会中断
+            
             return new Promise(() => { })
-            // console.log('catch error');
+           
         })
     }
 }

@@ -17,20 +17,20 @@ export default {
     color:String,
   },
   methods:{
-    //回到主页
+    //?回到主页
     toHome(){
       this.$router.push('/home')
       this.$bus.$emit('isPersonal',true)
     },
-    //去搜索
+    //?去搜索
     toSearch(){
-      //当前页面路径
+      //?当前页面路径
       let now = this.$route.path.split('/')[1]
-      // console.log(now);
+    
       this.$bus.$emit('isPersonal',false)
       this.$router.push(`/search?perRoute=${now}`)
     },
-    //去购物车
+    //?去购物车
     toCarShop(){
       this.$router.push('/carShop')
       this.$bus.$emit('isPersonal',true)

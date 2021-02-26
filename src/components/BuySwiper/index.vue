@@ -10,18 +10,9 @@
           </div>
         </div> 
       </div>
-      <!-- <div class="swiper-slide">
-        <div class="slideItem">
-          <img src="https://yanxuan.nosdn.127.net/e21381b7e1e7caebbe72488db9542163.gif" alt="">
-          <div class="texcontent">
-            <p>9.9超值</p>
-            <p>爆品定价直降</p>
-          </div>
-        </div> 
-      </div> -->
+    
     </div>
-    <!-- Add Pagination -->
-    <!-- <div class="swiper-pagination"></div> -->
+  
     <div class="swiper-scrollbar"></div>
   </div>
 </template>
@@ -30,13 +21,13 @@ import Swiper from 'swiper'
 export default {
   data() {
     return {
-      swiperDate:{},//轮播数据
+      swiperDate:{},//todo 轮播数据
       }
   },
   async mounted() {
-      // 请求数据
+      //? 请求数据
       await this.getNavWap();
-      //初始化轮播
+      //?初始化轮播
       this.$nextTick(()=>{
         this.initSwiper();
       })
@@ -45,9 +36,9 @@ export default {
     initSwiper(){
       let mySwiper = new Swiper('.swiper-container', {
         slidesPerView :4,
-        // slidesPerGroup : 1,
+      
         slidesPerColumn: 2,
-        // spaceBetween: 0,
+       
         pagination: {
           el: '.swiper-pagination',
         },
@@ -56,11 +47,11 @@ export default {
           dragSize:20
         },
       });
-      //拖动条的颜色
+      
       mySwiper.scrollbar.dragEl.style.background='red';
-      // console.log(mySwiper.scrollbar.dragEl.style.background);
+      
     },
-    //请求
+    //?请求
     async getNavWap(){
       let result = await this.$API.getWangyi();
       this.swiperDate = result.data.data
